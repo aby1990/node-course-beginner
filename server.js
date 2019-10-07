@@ -2,15 +2,15 @@ const express = new require('express');
 const hbs = new require('hbs');
 const fs = new require('fs');
 
-var app = express();
+const app = express();
 
 hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine','hbs');
 
 
 app.use((req, res, next)=>{
-    var now = new Date().toString();
-    var log = `${now}: ${req.method} ${req.url}`;
+    const now = new Date().toString();
+    const log = `${now}: ${req.method} ${req.url}`;
     console.log(log);
     fs.appendFile('server.log',log+'\n',(err)=>{
         if(err){
